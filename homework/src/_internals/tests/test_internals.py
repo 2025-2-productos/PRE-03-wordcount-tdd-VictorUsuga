@@ -1,6 +1,6 @@
 import sys
 
-from ...wordcount import parse_args
+from ...wordcount import parse_args, preprocess_lines
 from ..read_all_lines import read_all_lines
 
 
@@ -25,4 +25,7 @@ def test_read_all_lines():
         for line in lines
     )
 
-
+def test_preprocess_lines():
+    lines = ["hello, World! ", "Python is GREAT."]
+    preprocessed = preprocess_lines(lines)
+    assert preprocessed == ["hello world!", "python is great."]
